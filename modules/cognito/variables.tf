@@ -78,3 +78,59 @@ variable "sns_arns" {
   description = "SNS topics that cognito user pool needs to have access"
   default = []
 }
+
+# Cognito user pool client
+variable "uses_oauth" {
+  type = bool
+  default = false
+}
+variable "oauth_flows" {
+  type = list(string)
+  description = "OAuth flows permited: ['code', 'implicit', 'client_credentials']"
+  default = []
+}
+variable "oauth_scopes" {
+  type = list(string)
+  description = "OAuth scopes permited: ['phone', 'email', 'openid', 'profile']"
+  default = []
+}
+variable "callback_urls" {
+  type = list(string)
+  description = "URLs that the user will be redirected to after sign in"
+  default = []
+}
+variable "logout_urls" {
+  type = list(string)
+  description = "URLs that the user will be redirected to after sign out"
+  default = []
+}
+variable "access_token_validity_hours" {
+  type = number
+  default = 1
+}
+variable "id_token_validity_hours" {
+  type = number
+  default = 1
+}
+variable "refresh_token_validity_hours" {
+  type = number
+  default = 1
+}
+variable "enable_token_revocation" {
+  type = bool
+  default = false
+}
+variable "cognito_domain_name" {
+  type = string
+  description = "Cognito domain name"
+}
+variable "certificate_arn" {
+  type = string
+  description = "ACM Certificate ARN"
+}
+
+# Route 53
+variable "zone_id" {
+  type = string
+  description = "Route 53 zone ID"
+}
